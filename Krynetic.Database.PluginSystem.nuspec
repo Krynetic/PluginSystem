@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>$authors$</authors>
+    <developmentDependency>false</developmentDependency>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <projectUrl>https://github.com/Krynetic</projectUrl>
+    <description>$description$</description>
+    <tags>database plugin system</tags>
+    <repository type="git" url="https://github.com/Krynetic/PluginSystem" commit="$commit$" />
+
+    <copyright>Copyright (c) Krynetic</copyright>
+    <readme>README.md</readme>
+    
+    <!--<releaseNotes>https://github.com/Krynetic/PluginSystem/blob/main/CHANGELOG.md</releaseNotes>-->
+
+    <dependencies>
+        <group targetFramework=".NETStandard2.1" />
+    </dependencies>
+
+  </metadata>
+  <files>
+    <file src="README.md" target="" />
+    <file src="LICENSE.txt" target="" />
+    <file src="bin\$configuration$\netstandard2.1\$id$.dll" target="lib\netstandard2.1" />
+    <file src="bin\$configuration$\netstandard2.1\$id$.xml" target="lib\netstandard2.1" />
+    <file src="bin\$configuration$\netstandard2.1\$id$.pdb" target="lib\netstandard2.1" />
+  </files>
+</package>

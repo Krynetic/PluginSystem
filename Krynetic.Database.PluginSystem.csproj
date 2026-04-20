@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    
+    <IsPackable>true</IsPackable>
+    <NuspecFile>Krynetic.Database.PluginSystem.nuspec</NuspecFile>
+    
+    <Authors>Steven Hartgers</Authors>
+    <Description>Krynetic pluginsystem for creating custom plugins</Description>
+  </PropertyGroup>
+
+  <Target Name="EnsureReleaseConfiguration" Condition="'$(Configuration)' != 'Release'" BeforeTargets="GenerateNuspec">
+    <Error Text="The application must only be published in the &quot;Release&quot; configuration." />
+  </Target>
+  
+  <!-- https://github.com/dasMulli/nuget-include-p2p-example/blob/master/LibA/LibA.csproj -->
+  <Target Name="SetNuspecProperties" BeforeTargets="GenerateNuspec">
+    <PropertyGroup>
+      <_NuspecCommit>$(RepositoryCommit)</_NuspecCommit>
+      <_NuspecCommit Condition="'$(_NuspecCommit)' == ''">$(SourceRevisionId)</_NuspecCommit>
+
+      <NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
+      <NuspecProperties>$(NuspecProperties);id=$(AssemblyName)</NuspecProperties>
+      <NuspecProperties>$(NuspecProperties);version=$(PackageVersion)</NuspecProperties>
+      <NuspecProperties>$(NuspecProperties);description=$(Description)</NuspecProperties>
+      <NuspecProperties>$(NuspecProperties);authors=$(Authors)</NuspecProperties>
+      <NuspecProperties>$(NuspecProperties);commit=$(_NuspecCommit)</NuspecProperties>
+    </PropertyGroup>
+  </Target>
+  
+</Project>

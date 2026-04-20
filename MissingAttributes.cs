@@ -1,0 +1,24 @@
+﻿#pragma warning disable IDE0130 // Namespace does not match folder structure
+
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+
+namespace System.Runtime.CompilerServices;
+
+[ExcludeFromCodeCoverage]
+[DebuggerNonUserCode]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
+internal sealed class RequiredMemberAttribute : Attribute { }
+
+[ExcludeFromCodeCoverage]
+[DebuggerNonUserCode]
+[AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
+internal sealed class CompilerFeatureRequiredAttribute(string featureName) : Attribute
+{
+    public string FeatureName { get; } = featureName;
+
+    public bool IsOptional { get; set; } // Originally, this was 'Init', but that does not seem necessary and may collide with the IsExternalInit package
+
+    public const string RefStructs = nameof(RefStructs);
+    public const string RequiredMembers = nameof(RequiredMembers);
+}
