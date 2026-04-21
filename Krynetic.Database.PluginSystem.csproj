@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
 
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     
     <IsPackable>true</IsPackable>
@@ -16,6 +16,8 @@
     
     <Authors>Steven Hartgers</Authors>
     <Description>Krynetic pluginsystem for creating custom plugins</Description>
+
+    <WarningsAsErrors>CS1591</WarningsAsErrors>
   </PropertyGroup>
 
   <Target Name="EnsureReleaseConfiguration" Condition="'$(Configuration)' != 'Release'" BeforeTargets="GenerateNuspec">

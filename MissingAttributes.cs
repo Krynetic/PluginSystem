@@ -1,9 +1,11 @@
 ﻿#pragma warning disable IDE0130 // Namespace does not match folder structure
 
+namespace System.Runtime.CompilerServices;
+
+#if !NETSTANDARD2_1_OR_GREATER
+
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-
-namespace System.Runtime.CompilerServices;
 
 [ExcludeFromCodeCoverage]
 [DebuggerNonUserCode]
@@ -22,3 +24,5 @@ internal sealed class CompilerFeatureRequiredAttribute(string featureName) : Att
     public const string RefStructs = nameof(RefStructs);
     public const string RequiredMembers = nameof(RequiredMembers);
 }
+
+#endif
